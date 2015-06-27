@@ -8,7 +8,7 @@ Bundler.require(*Rails.groups)
 
 module SpreeRails4
   class Application < Rails::Application
-    
+
     config.to_prepare do
       # Load application's model / class decorators
       Dir.glob(File.join(File.dirname(__FILE__), "../app/**/*_decorator*.rb")) do |c|
@@ -35,5 +35,6 @@ module SpreeRails4
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+    config.action_view.embed_authenticity_token_in_remote_forms = true
   end
 end
