@@ -1,4 +1,6 @@
 Spree::UserSessionsController.class_eval do
+  respond_to :html, :json
+
   def create
     resource = Spree::User.find_for_database_authentication(:email => params[:spree_user][:email])
     return invalid_login_attempt unless resource
