@@ -19,13 +19,13 @@ module Spree
           value = case type
           when :revenue
             Spree::Order.
-              where(created_at: Date.today.beginning_of_day..((Date.today-1.day).end_of_day)).sum(:total)
+              where(created_at: ((Date.today-1.day).beginning_of_day..Date.today.end_of_day)).sum(:total)
           when :order
             Spree::Order.
-              where(created_at: Date.today.beginning_of_day..((Date.today-1.day).end_of_day)).count
+              where(created_at: ((Date.today-1.day).beginning_of_day..Date.today.end_of_day)).count
           else
             Spree.send("#{type}_class").
-              where(created_at: Date.today.beginning_of_day..((Date.today-1.day).end_of_day)).count
+              where(created_at: ((Date.today-1.day).beginning_of_day..Date.today.end_of_day)).count
           end
 
           {
@@ -38,13 +38,13 @@ module Spree
           value = case type
           when :revenue
             Spree::Order.
-              where(created_at: Date.today.beginning_of_day..((Date.today-1.day).end_of_day)).sum(:total)
+              where(created_at: ((Date.today-7.day).beginning_of_day..Date.today.end_of_day)).count
           when :order
             Spree::Order.
-              where(created_at: Date.today.beginning_of_day..((Date.today-1.day).end_of_day)).count
+              where(created_at: ((Date.today-7.day).beginning_of_day..Date.today.end_of_day)).count
           else
             Spree.send("#{type}_class").
-              where(created_at: Date.today.beginning_of_day..((Date.today-1.day).end_of_day)).count
+              where(created_at: ((Date.today-7.day).beginning_of_day..Date.today.end_of_day)).count
           end
 
           {
@@ -56,14 +56,11 @@ module Spree
         def total(type)
           value = case type
           when :revenue
-            Spree::Order.
-              where(created_at: Date.today.beginning_of_day..((Date.today-1.day).end_of_day)).sum(:total)
+            Spree::Order.sum(:total)
           when :order
-            Spree::Order.
-              where(created_at: Date.today.beginning_of_day..((Date.today-1.day).end_of_day)).count
+            Spree::Order.sum(:total)
           else
-            Spree.send("#{type}_class").
-              where(created_at: Date.today.beginning_of_day..((Date.today-1.day).end_of_day)).count
+            Spree.send("#{type}_class").count
           end
 
           {
