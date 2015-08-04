@@ -64,6 +64,20 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
 
+  config.action_mailer.default_url_options = { host: 'spreesam.com' }
+
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    :address   => 'smtp.sendgrid.net',
+    :port      => 587, # ports 587 and 2525 are also supported with STARTTLS
+    :authentication => :plain,
+    :user_name => ENV["SENDGRID_USERNAME"],
+    :password  => ENV["SENDGRID_PASSWORD"], # SMTP password is any valid API key
+    :domain => 'heroku.com', # your domain to identify your server when connecting
+    :enable_starttls_auto => true, # detects and uses STARTTLS
+  }
+
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
