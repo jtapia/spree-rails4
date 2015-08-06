@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/crowdint/spree_sam.git
+  revision: 0ed6cf414648f8c1cd9acb779971b5922c162e37
+  specs:
+    spree_sam (3.0.2)
+      spree_core (~> 3.1.0.beta)
+
+GIT
   remote: git://github.com/spree/spree.git
   revision: 4493c1258e1defbe919691ac5e522671156d9731
   specs:
@@ -338,6 +345,7 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   spree!
   spree_auth_devise!
+  spree_sam!
   spring
   turbolinks
   uglifier (>= 1.3.0)
