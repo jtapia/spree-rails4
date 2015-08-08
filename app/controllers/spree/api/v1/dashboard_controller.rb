@@ -3,6 +3,9 @@ module Spree
     module V1
       class DashboardController < Spree::Api::BaseController
 
+        before_filter :dump_headers
+        after_filter :dump_response
+
         def index
           result = {
             users: [ last_day(:user), weekly(:user), total(:user) ],
@@ -68,6 +71,19 @@ module Spree
             name: 'Total'
           }
         end
+
+        def dump_headers
+          if ENV['DUMP_HEADERS'] == 'yes'
+            Rails.logger.info(request.headers.inspect)
+          end
+        end
+
+        def dump_response
+          if ENV['DUMP_RESPONSE_HEADERS'] == 'yes'
+            Rails.logger.info(response.headers.inspect)
+          end
+        end
+
 
       end
     end
