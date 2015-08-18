@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/crowdint/spree_sam.git
-  revision: 6fac92f49293cde9771f03b7b3996a8558f10aa9
+  revision: dc3482d25404e5c2bf7080d3084c9cd03a35804f
   specs:
     spree_sam (3.0.2)
       spree_core (~> 3.1.0.beta)
